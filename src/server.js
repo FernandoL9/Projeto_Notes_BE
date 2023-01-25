@@ -1,7 +1,7 @@
 require("express-async-errors")
 require("dotenv/config")
 
-const migrationRun = require("./database/sqlite/migrations")
+const migrationRun = require("./database/sqlite")
 const AppError = require("./utils/AppError")
 const express = require('express') // puxando as dependência da pasta express
 const uploadConfig = require('./configs/upload')
