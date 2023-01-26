@@ -1,22 +1,23 @@
 require("express-async-errors")
 require("dotenv/config")
 
-// const baseRun = require("./database/sqlite")
-const migrationRun = require("./database/sqlite/migrations")
+const baseRun = require("./database/sqlite/migrations")
+// const migrationRun = require("./database/knex")
 const AppError = require("./utils/AppError")
-const express = require('express') // puxando as dependência da pasta express
 const uploadConfig = require('./configs/upload')
 
+const express = require('express') // puxando as dependência da pasta express
 const cors = require('cors')
 const routes = require('./routes') // inicializando a aplicação 
-const app = express();
 
+baseRun()
+
+const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(routes)
 
-// baseRun()
-migrationRun()
+// migrationRun()
 
 app.use("/files", express.static(uploadConfig.UPLOADS_FOLDER))
 
