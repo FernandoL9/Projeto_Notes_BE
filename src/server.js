@@ -1,7 +1,7 @@
 require("express-async-errors")
 require("dotenv/config")
 
-const baseRun = require("./database/sqlite/migrations")
+const baseRun = require("./database/sqlite")
 // const migrationRun = require("./database/knex")
 const AppError = require("./utils/AppError")
 const uploadConfig = require('./configs/upload')
